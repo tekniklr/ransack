@@ -28,9 +28,6 @@ module Ransack
           name         = attr.arel_attribute.name.to_s
           table        = attr.arel_attribute.relation.table_name
           schema_cache = ::ActiveRecord::Base.connection.schema_cache
-          unless schema_cache.send(database_table_exists?, table)
-            raise "No table named #{table} exists."
-          end
           attr.klass.columns.find { |column| column.name == name }.type
         end
 
